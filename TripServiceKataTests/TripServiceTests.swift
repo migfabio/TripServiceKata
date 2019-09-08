@@ -34,6 +34,7 @@ class TripServiceTests: XCTestCase {
         TestableTripService.currentUser = TestConstant.REGISTERED
         let user = User()
         user.addFriend(TestConstant.A_USER)
+        user.addTrip(TestConstant.ITALY)
         XCTAssertEqual(try! TestableTripService.trips(by: user), [])
     }
     

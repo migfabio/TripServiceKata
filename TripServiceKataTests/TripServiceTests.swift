@@ -13,6 +13,9 @@ struct TestConstant {
     static let GUEST: User? = nil
     static let REGISTERED: User = User()
     static let A_USER: User = User()
+    
+    static let ITALY: Trip = Trip()
+    static let IRELAND: Trip = Trip()
 }
 
 class TripServiceTests: XCTestCase {
@@ -33,6 +36,16 @@ class TripServiceTests: XCTestCase {
         user.addFriend(TestConstant.A_USER)
         XCTAssertEqual(try! TestableTripService.trips(by: user), [])
     }
+    
+    func test_trips_giveLoggedInUserIsFriendWithUser_shouldReturnFriendTrips() {
+        TestableTripService.currentUser = TestConstant.REGISTERED
+        let user = User()
+        user.addFriend(TestConstant.REGISTERED)
+        user.addFriend(TestConstant.A_USER)
+        user.addTrip(TestConstant.ITALY)
+        user.addTrip(TestConstant.IRELAND)
+        XCTAssertEqual(try! TestableTripService.trips(by: user), [TestConstant.ITALY, TestConstant.IRELAND])
+    }
 }
 
 private class TestableTripService: TripService {
@@ -41,5 +54,9 @@ private class TestableTripService: TripService {
     
     override class func getLoggedUser() throws -> User? {
         return currentUser
+    }
+    
+    override class func getTrips(by user: User) throws -> [Trip] {
+        return user.trips
     }
 }

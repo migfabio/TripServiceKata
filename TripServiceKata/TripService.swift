@@ -20,7 +20,7 @@ class TripService {
                 }
             }
             if isFriend {
-                tripList = try! TripDAO.findTrips(by: user)
+                tripList = try! getTrips(by: user)
             }
             return tripList
         } else {
@@ -30,5 +30,9 @@ class TripService {
     
     class func getLoggedUser() throws -> User? {
         return try UserSession.instance.loggedUser()
+    }
+    
+    class func getTrips(by user: User) throws -> [Trip] {
+        return try TripDAO.findTrips(by: user)
     }
 }

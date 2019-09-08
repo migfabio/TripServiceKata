@@ -10,7 +10,7 @@ class TripService {
     
     class func trips(by user: User) throws -> [Trip] {
         var tripList = [Trip]()
-        let loggedUser = try! UserSession.instance.loggedUser()
+        let loggedUser = try! getLoggedUser()
         var isFriend = false
         if loggedUser != nil {
             for friend in user.friends {
@@ -26,5 +26,9 @@ class TripService {
         } else {
             throw UserError.notLoggedIn
         }
+    }
+    
+    class func getLoggedUser() throws -> User? {
+        return try UserSession.instance.loggedUser()
     }
 }

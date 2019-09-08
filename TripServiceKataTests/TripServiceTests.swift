@@ -9,16 +9,21 @@
 import XCTest
 @testable import TripServiceKata
 
+struct TestConstant {
+    static let GUEST: User? = nil
+    static let A_USER: User = User()
+}
+
 class TripServiceTests: XCTestCase {
     
     func test_trips_givenLoggedOutUser_shouldThrownNotLoggedInError() {
-        XCTAssertThrowsError(try TestableTripService.trips(by: User()))
+        XCTAssertThrowsError(try TestableTripService.trips(by: TestConstant.A_USER))
     }
 }
 
 private class TestableTripService: TripService {
     
     override class func getLoggedUser() throws -> User? {
-        return nil
+        return TestConstant.GUEST
     }
 }

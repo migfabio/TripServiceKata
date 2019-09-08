@@ -11,6 +11,7 @@ import XCTest
 
 struct TestConstant {
     static let GUEST: User? = nil
+    static let REGISTERED: User = User()
     static let A_USER: User = User()
 }
 
@@ -24,6 +25,13 @@ class TripServiceTests: XCTestCase {
     func test_trips_givenLoggedOutUser_shouldThrownNotLoggedInError() {
         TestableTripService.currentUser = TestConstant.GUEST
         XCTAssertThrowsError(try TestableTripService.trips(by: TestConstant.A_USER))
+    }
+    
+    func test_trips_givenLoggedInUserNotFriendWithUser_shouldReturnEmptyArray() {
+        TestableTripService.currentUser = TestConstant.REGISTERED
+        let user = User()
+        user.addFriend(TestConstant.A_USER)
+        XCTAssertEqual(try! TestableTripService.trips(by: user), [])
     }
 }
 

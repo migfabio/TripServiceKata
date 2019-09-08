@@ -16,14 +16,22 @@ struct TestConstant {
 
 class TripServiceTests: XCTestCase {
     
+    override func setUp() {
+        super.setUp()
+        TestableTripService.currentUser = nil
+    }
+    
     func test_trips_givenLoggedOutUser_shouldThrownNotLoggedInError() {
+        TestableTripService.currentUser = TestConstant.GUEST
         XCTAssertThrowsError(try TestableTripService.trips(by: TestConstant.A_USER))
     }
 }
 
 private class TestableTripService: TripService {
     
+    static var currentUser: User?
+    
     override class func getLoggedUser() throws -> User? {
-        return TestConstant.GUEST
+        return currentUser
     }
 }

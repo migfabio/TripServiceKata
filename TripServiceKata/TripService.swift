@@ -8,7 +8,7 @@
 
 class TripService {
     
-    class func trips(by user: User, loggedInUser: User?) throws -> [Trip] {
+    func trips(by user: User, loggedInUser: User?) throws -> [Trip] {
         guard let loggedUser = loggedInUser else {
             throw UserError.notLoggedIn
         }
@@ -18,7 +18,7 @@ class TripService {
             []
     }
     
-    class func getTrips(by user: User) throws -> [Trip] {
+    func getTrips(by user: User) throws -> [Trip] {
         return try TripDAO.findTrips(by: user)
     }
 }

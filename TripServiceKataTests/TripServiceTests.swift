@@ -22,8 +22,10 @@ struct TestConstant {
 
 class TripServiceTests: XCTestCase {
     
+    private let sut = TestableTripService()
+    
     func test_trips_givenLoggedOutUser_shouldThrownNotLoggedInError() {
-        XCTAssertThrowsError(try TestableTripService.trips(by: TestConstant.A_USER, loggedInUser: TestConstant.GUEST)) { error in
+        XCTAssertThrowsError(try sut.trips(by: TestConstant.A_USER, loggedInUser: TestConstant.GUEST)) { error in
             XCTAssertEqual(error as? UserError, UserError.notLoggedIn)
         }
     }
@@ -33,7 +35,7 @@ class TripServiceTests: XCTestCase {
             $0.friends = [TestConstant.A_USER]
             $0.trips = [TestConstant.ITALY]
         }.build()
-        XCTAssertEqual(try! TestableTripService.trips(by: user, loggedInUser: TestConstant.REGISTERED), [])
+        XCTAssertEqual(try! sut.trips(by: user, loggedInUser: TestConstant.REGISTERED), [])
     }
     
     func test_trips_giveLoggedInUserIsFriendWithUser_shouldReturnFriendTrips() {
@@ -41,13 +43,13 @@ class TripServiceTests: XCTestCase {
             $0.friends = [TestConstant.REGISTERED, TestConstant.A_USER]
             $0.trips = [TestConstant.ITALY, TestConstant.IRELAND]
         }.build()
-        XCTAssertEqual(try! TestableTripService.trips(by: user, loggedInUser: TestConstant.REGISTERED), [TestConstant.ITALY, TestConstant.IRELAND])
+        XCTAssertEqual(try! sut.trips(by: user, loggedInUser: TestConstant.REGISTERED), [TestConstant.ITALY, TestConstant.IRELAND])
     }
 }
 
 private class TestableTripService: TripService {
     
-    override class func getTrips(by user: User) throws -> [Trip] {
+    override func getTrips(by user: User) throws -> [Trip] {
         return user.trips
     }
 }

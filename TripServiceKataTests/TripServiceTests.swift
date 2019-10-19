@@ -27,7 +27,9 @@ class TripServiceTests: XCTestCase {
     
     func test_trips_givenLoggedOutUser_shouldThrownNotLoggedInError() {
         TestableTripService.currentUser = TestConstant.GUEST
-        XCTAssertThrowsError(try TestableTripService.trips(by: TestConstant.A_USER))
+        XCTAssertThrowsError(try TestableTripService.trips(by: TestConstant.A_USER)) { error in
+            XCTAssertEqual(error as? UserError, UserError.notLoggedIn)
+        }
     }
     
     func test_trips_givenLoggedInUserNotFriendWithUser_shouldReturnEmptyArray() {

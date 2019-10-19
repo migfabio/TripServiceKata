@@ -13,11 +13,9 @@ class TripService {
             throw UserError.notLoggedIn
         }
         
-        var tripList = [Trip]()
-        if user.friend(with: loggedUser) {
-            tripList = try! getTrips(by: user)
-        }
-        return tripList
+        return user.friend(with: loggedUser) ?
+            (try? getTrips(by: user)) ?? [] :
+            []
     }
     
     class func getLoggedUser() throws -> User? {

@@ -27,7 +27,7 @@ class User: Equatable {
     }
     
     func friend(with user: User) -> Bool {
-        return false
+        return friends.contains(user)
     }
     
     static func == (lhs: User, rhs: User) -> Bool {

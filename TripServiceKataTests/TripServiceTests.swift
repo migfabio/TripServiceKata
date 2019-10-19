@@ -13,6 +13,8 @@ struct TestConstant {
     static let GUEST: User? = nil
     static let REGISTERED: User = User()
     static let A_USER: User = User()
+    static let ALICE: User = User()
+    static let BOB: User = User()
     
     static let ITALY: Trip = Trip()
     static let IRELAND: Trip = Trip()
@@ -64,7 +66,7 @@ private class TestableTripService: TripService {
     }
 }
 
-private class UserBuilder {
+class UserBuilder {
     
     var friends = [User]()
     var trips = [Trip]()

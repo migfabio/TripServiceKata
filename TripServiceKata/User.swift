@@ -26,6 +26,10 @@ class User: Equatable {
         trips.append(trip)
     }
     
+    func friend(with user: User) -> Bool {
+        return false
+    }
+    
     static func == (lhs: User, rhs: User) -> Bool {
         return lhs.id == rhs.id
     }

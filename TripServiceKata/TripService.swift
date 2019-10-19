@@ -8,6 +8,12 @@
 
 class TripService {
     
+    private var tripDAO: TripDAO?
+    
+    init(tripDAO: TripDAO? = nil) {
+        self.tripDAO = tripDAO
+    }
+    
     func trips(by user: User, loggedInUser: User?) throws -> [Trip] {
         guard let loggedUser = loggedInUser else {
             throw UserError.notLoggedIn
@@ -19,6 +25,6 @@ class TripService {
     }
     
     func getTrips(by user: User) throws -> [Trip] {
-        return try TripDAO.findTrips(by: user)
+        return try (tripDAO?.findTrips(by: user) ?? [])
     }
 }

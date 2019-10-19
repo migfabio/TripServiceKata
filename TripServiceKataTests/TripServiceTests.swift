@@ -22,10 +22,8 @@ struct TestConstant {
 
 class TripServiceTests: XCTestCase {
     
-    private let sut = TestableTripService()
-    
     func test_trips_givenLoggedOutUser_shouldThrownNotLoggedInError() {
-        XCTAssertThrowsError(try sut.trips(by: TestConstant.A_USER, loggedInUser: TestConstant.GUEST)) { error in
+        XCTAssertThrowsError(try makeSUT().trips(by: TestConstant.A_USER, loggedInUser: TestConstant.GUEST)) { error in
             XCTAssertEqual(error as? UserError, UserError.notLoggedIn)
         }
     }
@@ -35,7 +33,7 @@ class TripServiceTests: XCTestCase {
             $0.friends = [TestConstant.A_USER]
             $0.trips = [TestConstant.ITALY]
         }.build()
-        XCTAssertEqual(try? sut.trips(by: user, loggedInUser: TestConstant.REGISTERED), [])
+        XCTAssertEqual(try? makeSUT(withTrips: user.trips).trips(by: user, loggedInUser: TestConstant.REGISTERED), [])
     }
     
     func test_trips_giveLoggedInUserIsFriendWithUser_shouldReturnFriendTrips() {
@@ -43,13 +41,23 @@ class TripServiceTests: XCTestCase {
             $0.friends = [TestConstant.REGISTERED, TestConstant.A_USER]
             $0.trips = [TestConstant.ITALY, TestConstant.IRELAND]
         }.build()
-        XCTAssertEqual(try? sut.trips(by: user, loggedInUser: TestConstant.REGISTERED), [TestConstant.ITALY, TestConstant.IRELAND])
+        XCTAssertEqual(try? makeSUT(withTrips: user.trips).trips(by: user, loggedInUser: TestConstant.REGISTERED), [TestConstant.ITALY, TestConstant.IRELAND])
+    }
+    
+    private func makeSUT(withTrips trips: [Trip] = []) -> TripService {
+        let mockTripDAO = MockTripDAO(trips: trips)
+        return TripService(tripDAO: mockTripDAO)
     }
 }
 
-private class TestableTripService: TripService {
+private class MockTripDAO: TripDAO {
+    private var trips: [Trip]
     
-    override func getTrips(by user: User) throws -> [Trip] {
-        return user.trips
+    init(trips: [Trip]) {
+        self.trips = trips
+    }
+    
+    override func findTrips(by user: User) throws -> [Trip] {
+        return trips
     }
 }

@@ -9,16 +9,15 @@
 class TripService {
     
     class func trips(by user: User) throws -> [Trip] {
-        var tripList = [Trip]()
-        let loggedUser = try! getLoggedUser()
-        if loggedUser != nil {
-            if user.friend(with: loggedUser!) {
-                tripList = try! getTrips(by: user)
-            }
-            return tripList
-        } else {
+        guard let loggedUser = try? getLoggedUser() else {
             throw UserError.notLoggedIn
         }
+        
+        var tripList = [Trip]()
+        if user.friend(with: loggedUser) {
+            tripList = try! getTrips(by: user)
+        }
+        return tripList
     }
     
     class func getLoggedUser() throws -> User? {

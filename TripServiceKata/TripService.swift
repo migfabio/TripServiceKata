@@ -8,14 +8,18 @@
 
 class TripService {
     
-    class func trips(by user: User) throws -> [Trip] {
-        guard let loggedUser = try? getLoggedUser() else {
+    class func trips(by user: User, loggedInUser: User?) throws -> [Trip] {
+        guard let loggedUser = loggedInUser else {
             throw UserError.notLoggedIn
         }
         
         return user.friend(with: loggedUser) ?
             (try? getTrips(by: user)) ?? [] :
             []
+    }
+    
+    class func trips(by user: User) throws -> [Trip] {
+        return try trips(by: user, loggedInUser: getLoggedUser())
     }
     
     class func getLoggedUser() throws -> User? {

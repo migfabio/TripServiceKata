@@ -28,28 +28,25 @@ class TripServiceTests: XCTestCase {
     }
     
     func test_trips_givenLoggedOutUser_shouldThrownNotLoggedInError() {
-        TestableTripService.currentUser = TestConstant.GUEST
-        XCTAssertThrowsError(try TestableTripService.trips(by: TestConstant.A_USER)) { error in
+        XCTAssertThrowsError(try TestableTripService.trips(by: TestConstant.A_USER, loggedInUser: TestConstant.GUEST)) { error in
             XCTAssertEqual(error as? UserError, UserError.notLoggedIn)
         }
     }
     
     func test_trips_givenLoggedInUserNotFriendWithUser_shouldReturnEmptyArray() {
-        TestableTripService.currentUser = TestConstant.REGISTERED
         let user = UserBuilder {
             $0.friends = [TestConstant.A_USER]
             $0.trips = [TestConstant.ITALY]
         }.build()
-        XCTAssertEqual(try! TestableTripService.trips(by: user), [])
+        XCTAssertEqual(try! TestableTripService.trips(by: user, loggedInUser: TestConstant.REGISTERED), [])
     }
     
     func test_trips_giveLoggedInUserIsFriendWithUser_shouldReturnFriendTrips() {
-        TestableTripService.currentUser = TestConstant.REGISTERED
         let user = UserBuilder {
             $0.friends = [TestConstant.REGISTERED, TestConstant.A_USER]
             $0.trips = [TestConstant.ITALY, TestConstant.IRELAND]
         }.build()
-        XCTAssertEqual(try! TestableTripService.trips(by: user), [TestConstant.ITALY, TestConstant.IRELAND])
+        XCTAssertEqual(try! TestableTripService.trips(by: user, loggedInUser: TestConstant.REGISTERED), [TestConstant.ITALY, TestConstant.IRELAND])
     }
 }
 

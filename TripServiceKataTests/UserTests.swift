@@ -27,3 +27,22 @@ class UserTests: XCTestCase {
         XCTAssertTrue(sut.friend(with: aUser))
     }
 }
+
+class UserBuilder {
+    
+    var friends = [User]()
+    var trips = [Trip]()
+    
+    typealias UserBuilderClosure = (UserBuilder) -> Void
+    
+    init(builderClosure: UserBuilderClosure) {
+        builderClosure(self)
+    }
+    
+    func build() -> User {
+        let user = User()
+        friends.forEach { user.addFriend($0) }
+        trips.forEach { user.addTrip($0) }
+        return user
+    }
+}

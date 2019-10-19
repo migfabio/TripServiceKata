@@ -35,7 +35,7 @@ class TripServiceTests: XCTestCase {
             $0.friends = [TestConstant.A_USER]
             $0.trips = [TestConstant.ITALY]
         }.build()
-        XCTAssertEqual(try! sut.trips(by: user, loggedInUser: TestConstant.REGISTERED), [])
+        XCTAssertEqual(try? sut.trips(by: user, loggedInUser: TestConstant.REGISTERED), [])
     }
     
     func test_trips_giveLoggedInUserIsFriendWithUser_shouldReturnFriendTrips() {
@@ -43,7 +43,7 @@ class TripServiceTests: XCTestCase {
             $0.friends = [TestConstant.REGISTERED, TestConstant.A_USER]
             $0.trips = [TestConstant.ITALY, TestConstant.IRELAND]
         }.build()
-        XCTAssertEqual(try! sut.trips(by: user, loggedInUser: TestConstant.REGISTERED), [TestConstant.ITALY, TestConstant.IRELAND])
+        XCTAssertEqual(try? sut.trips(by: user, loggedInUser: TestConstant.REGISTERED), [TestConstant.ITALY, TestConstant.IRELAND])
     }
 }
 
@@ -51,24 +51,5 @@ private class TestableTripService: TripService {
     
     override func getTrips(by user: User) throws -> [Trip] {
         return user.trips
-    }
-}
-
-class UserBuilder {
-    
-    var friends = [User]()
-    var trips = [Trip]()
-    
-    typealias UserBuilderClosure = (UserBuilder) -> Void
-    
-    init(builderClosure: UserBuilderClosure) {
-        builderClosure(self)
-    }
-    
-    func build() -> User {
-        let user = User()
-        friends.forEach { user.addFriend($0) }
-        trips.forEach { user.addTrip($0) }
-        return user
     }
 }

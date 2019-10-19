@@ -13,12 +13,7 @@ class TripService {
         let loggedUser = try! getLoggedUser()
         var isFriend = false
         if loggedUser != nil {
-            for friend in user.friends {
-                if friend == loggedUser! {
-                    isFriend = true
-                    break
-                }
-            }
+            isFriend = user.friend(with: loggedUser!)
             if isFriend {
                 tripList = try! getTrips(by: user)
             }

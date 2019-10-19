@@ -8,12 +8,16 @@
 
 import Foundation
 
-open class TripDAO {
+public protocol TripDAO {
+    func findTrips(by user: User) throws -> [Trip]
+}
+
+public class TripDAOConcrete: TripDAO {
     
     public init() { }
     
-    open func findTrips(by user: User) throws -> [Trip] {
-        return try  TripDAO.findTrips(by: user)
+    public func findTrips(by user: User) throws -> [Trip] {
+        return try  TripDAOConcrete.findTrips(by: user)
     }
     
     class func findTrips(by user: User) throws -> [Trip] {

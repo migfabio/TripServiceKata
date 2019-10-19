@@ -16,7 +16,7 @@
 		E5E58F982325A15F007A5D2F /* TripServiceKata.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5E58F7723259FA1007A5D2F /* TripServiceKata.framework */; };
 		E5E58F9F2325A1EA007A5D2F /* TripServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E58F9E2325A1EA007A5D2F /* TripServiceTests.swift */; };
 		E5FC38BE235B3BB700FF718A /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FC38BD235B3BB700FF718A /* UserTests.swift */; };
-		E5FC38C0235B4D8C00FF718A /* TripDAOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FC38BF235B4D8C00FF718A /* TripDAOTests.swift */; };
+		E5FC38C0235B4D8C00FF718A /* TripDAOConcreteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FC38BF235B4D8C00FF718A /* TripDAOConcreteTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +42,7 @@
 		E5E58F972325A15F007A5D2F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E5E58F9E2325A1EA007A5D2F /* TripServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripServiceTests.swift; sourceTree = "<group>"; };
 		E5FC38BD235B3BB700FF718A /* UserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTests.swift; sourceTree = "<group>"; };
-		E5FC38BF235B4D8C00FF718A /* TripDAOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDAOTests.swift; sourceTree = "<group>"; };
+		E5FC38BF235B4D8C00FF718A /* TripDAOConcreteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDAOConcreteTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +101,7 @@
 			children = (
 				E5E58F9E2325A1EA007A5D2F /* TripServiceTests.swift */,
 				E5FC38BD235B3BB700FF718A /* UserTests.swift */,
-				E5FC38BF235B4D8C00FF718A /* TripDAOTests.swift */,
+				E5FC38BF235B4D8C00FF718A /* TripDAOConcreteTests.swift */,
 				E5E58F972325A15F007A5D2F /* Info.plist */,
 			);
 			path = TripServiceKataTests;
@@ -232,7 +232,7 @@
 			files = (
 				E5FC38BE235B3BB700FF718A /* UserTests.swift in Sources */,
 				E5E58F9F2325A1EA007A5D2F /* TripServiceTests.swift in Sources */,
-				E5FC38C0235B4D8C00FF718A /* TripDAOTests.swift in Sources */,
+				E5FC38C0235B4D8C00FF718A /* TripDAOConcreteTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -55,10 +55,9 @@ private class MockTripDAO: TripDAO {
     
     init(trips: [Trip]) {
         self.trips = trips
-        super.init()
     }
     
-    override func findTrips(by user: User) throws -> [Trip] {
+    func findTrips(by user: User) throws -> [Trip] {
         return trips
     }
 }

@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import TripServiceKata
+import TripServiceKata
 
 class TripDAOTests: XCTestCase {
     

@@ -100,9 +100,9 @@
 			isa = PBXGroup;
 			children = (
 				E5E58F9E2325A1EA007A5D2F /* TripServiceTests.swift */,
-				E5E58F972325A15F007A5D2F /* Info.plist */,
 				E5FC38BD235B3BB700FF718A /* UserTests.swift */,
 				E5FC38BF235B4D8C00FF718A /* TripDAOTests.swift */,
+				E5E58F972325A15F007A5D2F /* Info.plist */,
 			);
 			path = TripServiceKataTests;
 			sourceTree = "<group>";

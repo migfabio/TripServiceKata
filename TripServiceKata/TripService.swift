@@ -6,15 +6,15 @@
 //  Copyright © 2019 Fabio Mignogna. All rights reserved.
 //
 
-class TripService {
+public class TripService {
     
     private var tripDAO: TripDAO
     
-    init(tripDAO: TripDAO) {
+    public init(tripDAO: TripDAO) {
         self.tripDAO = tripDAO
     }
     
-    func trips(by user: User, loggedInUser: User?) throws -> [Trip] {
+    public func trips(by user: User, loggedInUser: User?) throws -> [Trip] {
         guard let loggedUser = loggedInUser else {
             throw UserError.notLoggedIn
         }
@@ -26,7 +26,7 @@ class TripService {
         return trips
     }
     
-    func getTrips(by user: User) throws -> [Trip] {
+    private func getTrips(by user: User) throws -> [Trip] {
         return try tripDAO.findTrips(by: user)
     }
 }

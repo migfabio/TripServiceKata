@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import TripServiceKata
+import TripServiceKata
 
 struct TestConstant {
     static let GUEST: User? = nil
@@ -55,6 +55,7 @@ private class MockTripDAO: TripDAO {
     
     init(trips: [Trip]) {
         self.trips = trips
+        super.init()
     }
     
     override func findTrips(by user: User) throws -> [Trip] {

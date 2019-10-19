@@ -8,9 +8,11 @@
 
 import Foundation
 
-class TripDAO {
+open class TripDAO {
     
-    func findTrips(by user: User) throws -> [Trip] {
+    public init() { }
+    
+    open func findTrips(by user: User) throws -> [Trip] {
         return try  TripDAO.findTrips(by: user)
     }
     

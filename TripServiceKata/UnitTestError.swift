@@ -8,6 +8,6 @@
 
 import Foundation
 
-enum UnitTestError: Error {
+public enum UnitTestError: Error {
     case dependantClassCalled(message: String)
 }

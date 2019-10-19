@@ -22,11 +22,6 @@ struct TestConstant {
 
 class TripServiceTests: XCTestCase {
     
-    override func setUp() {
-        super.setUp()
-        TestableTripService.currentUser = nil
-    }
-    
     func test_trips_givenLoggedOutUser_shouldThrownNotLoggedInError() {
         XCTAssertThrowsError(try TestableTripService.trips(by: TestConstant.A_USER, loggedInUser: TestConstant.GUEST)) { error in
             XCTAssertEqual(error as? UserError, UserError.notLoggedIn)
@@ -51,12 +46,6 @@ class TripServiceTests: XCTestCase {
 }
 
 private class TestableTripService: TripService {
-    
-    static var currentUser: User?
-    
-    override class func getLoggedUser() throws -> User? {
-        return currentUser
-    }
     
     override class func getTrips(by user: User) throws -> [Trip] {
         return user.trips

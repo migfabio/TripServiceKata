@@ -18,14 +18,6 @@ class TripService {
             []
     }
     
-    class func trips(by user: User) throws -> [Trip] {
-        return try trips(by: user, loggedInUser: getLoggedUser())
-    }
-    
-    class func getLoggedUser() throws -> User? {
-        return try UserSession.instance.loggedUser()
-    }
-    
     class func getTrips(by user: User) throws -> [Trip] {
         return try TripDAO.findTrips(by: user)
     }

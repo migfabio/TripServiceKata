@@ -11,10 +11,8 @@ class TripService {
     class func trips(by user: User) throws -> [Trip] {
         var tripList = [Trip]()
         let loggedUser = try! getLoggedUser()
-        var isFriend = false
         if loggedUser != nil {
-            isFriend = user.friend(with: loggedUser!)
-            if isFriend {
+            if user.friend(with: loggedUser!) {
                 tripList = try! getTrips(by: user)
             }
             return tripList

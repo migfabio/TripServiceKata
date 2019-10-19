@@ -10,6 +10,10 @@ import Foundation
 
 class TripDAO {
     
+    func findTrips(by user: User) throws -> [Trip] {
+        return try  TripDAO.findTrips(by: user)
+    }
+    
     class func findTrips(by user: User) throws -> [Trip] {
         throw UnitTestError.dependantClassCalled(message: "TripDAO should not be invoked on an unit test")
     }

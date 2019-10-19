@@ -8,9 +8,9 @@
 
 class TripService {
     
-    private var tripDAO: TripDAO?
+    private var tripDAO: TripDAO
     
-    init(tripDAO: TripDAO? = nil) {
+    init(tripDAO: TripDAO) {
         self.tripDAO = tripDAO
     }
     
@@ -19,12 +19,14 @@ class TripService {
             throw UserError.notLoggedIn
         }
         
-        return user.friend(with: loggedUser) ?
-            (try? getTrips(by: user)) ?? [] :
-            []
+        guard user.friend(with: loggedUser), let trips = try? getTrips(by: user) else {
+            return []
+        }
+        
+        return trips
     }
     
     func getTrips(by user: User) throws -> [Trip] {
-        return try (tripDAO?.findTrips(by: user) ?? [])
+        return try tripDAO.findTrips(by: user)
     }
 }

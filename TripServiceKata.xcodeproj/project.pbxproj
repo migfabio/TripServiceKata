@@ -13,7 +13,21 @@
 		E5E58F8B23259FB5007A5D2F /* TripDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E58F8523259FB4007A5D2F /* TripDAO.swift */; };
 		E5E58F8C23259FB5007A5D2F /* UnitTestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E58F8623259FB5007A5D2F /* UnitTestError.swift */; };
 		E5E58F8D23259FB5007A5D2F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E58F8723259FB5007A5D2F /* User.swift */; };
+		E5E58F982325A15F007A5D2F /* TripServiceKata.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5E58F7723259FA1007A5D2F /* TripServiceKata.framework */; };
+		E5E58F9F2325A1EA007A5D2F /* TripServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E58F9E2325A1EA007A5D2F /* TripServiceTests.swift */; };
+		E5FC38BE235B3BB700FF718A /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FC38BD235B3BB700FF718A /* UserTests.swift */; };
+		E5FC38C0235B4D8C00FF718A /* TripDAOConcreteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FC38BF235B4D8C00FF718A /* TripDAOConcreteTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E5E58F992325A15F007A5D2F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E5E58F6E23259FA1007A5D2F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E5E58F7623259FA1007A5D2F;
+			remoteInfo = TripServiceKata;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		E5E58F7723259FA1007A5D2F /* TripServiceKata.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TripServiceKata.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -24,6 +38,11 @@
 		E5E58F8523259FB4007A5D2F /* TripDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripDAO.swift; sourceTree = "<group>"; };
 		E5E58F8623259FB5007A5D2F /* UnitTestError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitTestError.swift; sourceTree = "<group>"; };
 		E5E58F8723259FB5007A5D2F /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		E5E58F932325A15F007A5D2F /* TripServiceKataTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TripServiceKataTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5E58F972325A15F007A5D2F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E5E58F9E2325A1EA007A5D2F /* TripServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripServiceTests.swift; sourceTree = "<group>"; };
+		E5FC38BD235B3BB700FF718A /* UserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTests.swift; sourceTree = "<group>"; };
+		E5FC38BF235B4D8C00FF718A /* TripDAOConcreteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDAOConcreteTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,6 +53,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E5E58F902325A15F007A5D2F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5E58F982325A15F007A5D2F /* TripServiceKata.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -41,6 +68,7 @@
 			isa = PBXGroup;
 			children = (
 				E5E58F7923259FA1007A5D2F /* TripServiceKata */,
+				E5E58F942325A15F007A5D2F /* TripServiceKataTests */,
 				E5E58F7823259FA1007A5D2F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -49,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				E5E58F7723259FA1007A5D2F /* TripServiceKata.framework */,
+				E5E58F932325A15F007A5D2F /* TripServiceKataTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -65,6 +94,17 @@
 				E5E58F7B23259FA1007A5D2F /* Info.plist */,
 			);
 			path = TripServiceKata;
+			sourceTree = "<group>";
+		};
+		E5E58F942325A15F007A5D2F /* TripServiceKataTests */ = {
+			isa = PBXGroup;
+			children = (
+				E5E58F9E2325A1EA007A5D2F /* TripServiceTests.swift */,
+				E5FC38BD235B3BB700FF718A /* UserTests.swift */,
+				E5FC38BF235B4D8C00FF718A /* TripDAOConcreteTests.swift */,
+				E5E58F972325A15F007A5D2F /* Info.plist */,
+			);
+			path = TripServiceKataTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -98,16 +138,39 @@
 			productReference = E5E58F7723259FA1007A5D2F /* TripServiceKata.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		E5E58F922325A15F007A5D2F /* TripServiceKataTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E5E58F9B2325A15F007A5D2F /* Build configuration list for PBXNativeTarget "TripServiceKataTests" */;
+			buildPhases = (
+				E5E58F8F2325A15F007A5D2F /* Sources */,
+				E5E58F902325A15F007A5D2F /* Frameworks */,
+				E5E58F912325A15F007A5D2F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E5E58F9A2325A15F007A5D2F /* PBXTargetDependency */,
+			);
+			name = TripServiceKataTests;
+			productName = TripServiceKataTests;
+			productReference = E5E58F932325A15F007A5D2F /* TripServiceKataTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		E5E58F6E23259FA1007A5D2F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1100;
 				LastUpgradeCheck = 1100;
 				ORGANIZATIONNAME = "Fabio Mignogna";
 				TargetAttributes = {
 					E5E58F7623259FA1007A5D2F = {
+						CreatedOnToolsVersion = 11.0;
+						LastSwiftMigration = 1100;
+					};
+					E5E58F922325A15F007A5D2F = {
 						CreatedOnToolsVersion = 11.0;
 						LastSwiftMigration = 1100;
 					};
@@ -127,12 +190,20 @@
 			projectRoot = "";
 			targets = (
 				E5E58F7623259FA1007A5D2F /* TripServiceKata */,
+				E5E58F922325A15F007A5D2F /* TripServiceKataTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		E5E58F7523259FA1007A5D2F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E5E58F912325A15F007A5D2F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -155,7 +226,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E5E58F8F2325A15F007A5D2F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5FC38BE235B3BB700FF718A /* UserTests.swift in Sources */,
+				E5E58F9F2325A1EA007A5D2F /* TripServiceTests.swift in Sources */,
+				E5FC38C0235B4D8C00FF718A /* TripDAOConcreteTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E5E58F9A2325A15F007A5D2F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E5E58F7623259FA1007A5D2F /* TripServiceKata */;
+			targetProxy = E5E58F992325A15F007A5D2F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		E5E58F7D23259FA1007A5D2F /* Debug */ = {
@@ -326,6 +415,43 @@
 			};
 			name = Release;
 		};
+		E5E58F9C2325A15F007A5D2F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = TripServiceKataTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fabiomignogna.TripServiceKataTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		E5E58F9D2325A15F007A5D2F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = TripServiceKataTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fabiomignogna.TripServiceKataTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -343,6 +469,15 @@
 			buildConfigurations = (
 				E5E58F8023259FA1007A5D2F /* Debug */,
 				E5E58F8123259FA1007A5D2F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E5E58F9B2325A15F007A5D2F /* Build configuration list for PBXNativeTarget "TripServiceKataTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E5E58F9C2325A15F007A5D2F /* Debug */,
+				E5E58F9D2325A15F007A5D2F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

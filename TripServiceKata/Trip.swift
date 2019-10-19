@@ -8,11 +8,15 @@
 
 import Foundation
 
-class Trip: Equatable {
+public class Trip: Equatable {
     
-    private let id = UUID()
+    private let id: UUID
     
-    static func == (lhs: Trip, rhs: Trip) -> Bool {
+    public init() {
+        self.id = UUID()
+    }
+    
+    public static func == (lhs: Trip, rhs: Trip) -> Bool {
         return lhs.id == rhs.id
     }
 }
